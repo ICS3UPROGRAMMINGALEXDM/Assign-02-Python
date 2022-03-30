@@ -6,6 +6,10 @@
 # of a hexagonal prism with user input
 import math
 
+import colorama
+from colorama import Back, Fore, Style
+
+
 # introduction fnctn gives the opening sentence
 def introduction():
     print(
@@ -80,7 +84,9 @@ def final_statements():
 
     # Display syntax' for surface area and volume
     print(
-        "The surface area of your hexagon is {:.2f} {}^2".format(
+        Fore.YELLOW
+        + Style.BRIGHT
+        + "The surface area of your hexagon is {:.2f} {}^2".format(
             calculate.area, unitselect.unit
         )
     )
