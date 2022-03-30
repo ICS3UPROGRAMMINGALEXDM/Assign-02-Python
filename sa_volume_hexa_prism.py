@@ -24,7 +24,11 @@ def unitselect():
     while True:
         # getting user input for the unit
         unitselect.unit = (
-            input("Please enter the unit of measurement (cm, m, in, mm)\n")
+            input(
+                Fore.WHITE
+                + Style.BRIGHT
+                + "Please enter the unit of measurement (cm, m, in, mm)\n"
+            )
             .strip()
             .lower()
         )
@@ -36,11 +40,13 @@ def unitselect():
             or (unitselect.unit == "m")
             or (unitselect.unit == "in")
         ):
-            print("Unit selected successfully!")
+            print(Fore.GREEN + Style.BRIGHT + "Unit selected successfully!")
             break
         else:
             print(
-                "I don't recognize that unit. Please try again with one of the following (cm, m, in, mm)"
+                Fore.RED
+                + Style.BRIGHT
+                + "I don't recognize that unit. Please try again with one of the following (cm, m, in, mm)"
             )
 
 
@@ -50,28 +56,32 @@ def calculate():
     # while loop for error checking the the user input for length
     while True:
         # get length
-        num = input("Please enter the base length of your hexagonal prism \n").strip()
+        num = input(
+            Fore.WHITE + "Please enter the base length of your hexagonal prism \n"
+        ).strip()
         try:
             length = float(num)
             # Checks to ensure the number entered is positive
             if length > 0:
                 break
             else:
-                print("Can not be a negative number.")
+                print(Fore.RED + Style.BRIGHT + "Can not be a negative number.")
         except ValueError:
-            print("This number is invalid. Please try again.")
+            print(Fore.RED + Style.BRIGHT + "This number is invalid. Please try again.")
     # while loop for error checking the the user input for height
     while True:
         # get height
-        num2 = input("Please enter the height of your hexagonal prism\n")
+        num2 = input(Fore.WHITE + "Please enter the height of your hexagonal prism\n")
         try:
             height = float(num2)
             if height > 0:
                 break
             else:
-                print("Can not be a negative number.")
+                print(Fore.RED + Style.BRIGHT + "Can not be a negative number.")
         except ValueError:
-            print("That number is not valid. Please try again.")
+            print(
+                Fore.RED + Style.BRIGHT + "That number is not valid. Please try again."
+            )
 
     # Calculations for surface area and volume
     calculate.area = (6 * length * height) + (3 * math.sqrt(3)) * (length**2)
@@ -86,13 +96,13 @@ def final_statements():
     print(
         Fore.YELLOW
         + Style.BRIGHT
-        + "The surface area of your hexagon is {:.2f} {}^2".format(
+        + "The surface area of your hexagonal prism is {:.2f} {}^2".format(
             calculate.area, unitselect.unit
         )
     )
 
     print(
-        "The volume of your hexagon is {:.2f} {}^3".format(
+        "The volume of your hexagonal prism is {:.2f} {}^3".format(
             calculate.volume, unitselect.unit
         )
     )
